@@ -1,0 +1,11 @@
+<resources>
+	<string name="app_name">RabbitMQTest</string>
+	<string name="_1_simple_title">1. Simple RabbitMQ</string>
+	<string name="_2_exchange_title">2. Exchange RabbitMQ</string>
+	<string name="multi_queue">Multi Queue</string>
+	<string name="queue_1">[Queue 1]</string>
+	<string name="queue_2">[Queue 2]</string>
+	<string name="queue_3">[Queue 3]</string>
+	<string name="content">content</string>
+	<string name="send_amp_recv"><![CDATA[Send & Recv]]></string>
+</resources>
