@@ -1,4 +1,4 @@
-package com.clonecoding.rabbitmqtest.Constant;
+package com.clonecoding.rabbitmqtest.constant;
 
 /**
  * RabbitMQ 관련 상수 함수
@@ -21,7 +21,7 @@ public final class RBMQConstant {
 	public static final String MULTI_EXCHANGE_TYPE = "direct";
 
 	// RabbitMQ 에 연결할 queue 이름
-	public static final String QUEUE_NAME = "queue_example";
+	public static final String QUEUE_NAME = "commander_queue";
 
 	// RabbitMQ 에 연결할 multi queue 이름 1
 	public static final String MULTI_QUEUE_NAME_1 = "Multi_queue_1";
@@ -32,8 +32,17 @@ public final class RBMQConstant {
 	// RabbitMQ 에 연결할 multi queue 이름 3
 	public static final String MULTI_QUEUE_NAME_3 = "Multi_queue_3";
 
+	public static final String ADMIN_NAME = "woojinCheon";
+
+	public static final String ADMIN_PASS = "woojin";
+
+	public static final String VIRTUAL_HOST = "/";
+
 	// RabbitMQ 의 서버 URL
-	public static final String SERVER_HOST = "10.0.2.2";
+	public static final String SERVER_HOST = "192.168.0.168";
+
+	// RabbitMQ 의 서버 port
+	public static final int SERVER_PORT = 5672;
 
 	// 라우팅 키 1
 	public static final String ROUTING_KEY_1 = "Multi Queue 1 key";
@@ -52,4 +61,10 @@ public final class RBMQConstant {
 
 	// 컨텐츠 1
 	public static final String CONTENT_3 = "Message 3";
+
+	// MQTT topic
+	public static final String TOPIC = "topic22";
+
+	// MQTT message
+	public static final String MQTT_MSG = "test_message";
 }

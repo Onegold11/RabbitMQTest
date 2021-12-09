@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.clonecoding.rabbitmqtest.Constant.RBMQConstant;
+import com.clonecoding.rabbitmqtest.constant.RBMQConstant;
 import com.clonecoding.rabbitmqtest.repository.MultiCosumer;
 import com.clonecoding.rabbitmqtest.repository.MultiProducer;
 

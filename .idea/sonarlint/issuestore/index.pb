@@ -1,5 +1,23 @@
 
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+Ç
+Rapp/src/androidTest/java/com/clonecoding/rabbitmqtest/ExampleInstrumentedTest.java,d\2\d21a5e57ff84ddbfab530aca8e38520677527430
+Å
+Qapp/src/androidTest/java/com/clonecoding/rabbitmqtest/HelloWorldEspressoTest.java,9\7\971f2cf38fbeb1af83f8d6fe7064f6a9caa1b996
+{
+Kapp/src/main/java/com/clonecoding/rabbitmqtest/ui/activity/SubActivity.java,9\0\90893470fda4c48bee9b05085972b7a8cf30be2c
+z
+Japp/src/main/java/com/clonecoding/rabbitmqtest/viewmodel/SubViewModel.java,f\9\f990a6feb91aa0a2473ba24d45311088dfb89912
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+|
+Lapp/src/main/java/com/clonecoding/rabbitmqtest/repository/MultiProducer.java,8\2\82211b6dd994a083531f0b5f98436366098f31ea
+{
+Kapp/src/main/java/com/clonecoding/rabbitmqtest/repository/MultiCosumer.java,1\e\1ed595c7df9e747f547e1056f07d6b30277c4b84
+w
+Gapp/src/main/java/com/clonecoding/rabbitmqtest/data/RBMQConnection.java,f\0\f0bfe06d6fc90409a09663d00a6e1ff295c84b84
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+v
+Fapp/src/main/java/com/clonecoding/rabbitmqtest/repository/Cosumer.java,5\f\5f6a0fd899c8e284cdb3726baa411dce689f77f3
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

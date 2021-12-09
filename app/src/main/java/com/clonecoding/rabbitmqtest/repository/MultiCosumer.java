@@ -4,9 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.clonecoding.rabbitmqtest.Constant.RBMQConstant;
-import com.clonecoding.rabbitmqtest.dto.RoomDto;
-import com.google.gson.Gson;
+import com.clonecoding.rabbitmqtest.constant.RBMQConstant;
 import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -45,9 +43,6 @@ public class MultiCosumer {
 
 		String body = new String(message.getBody(), StandardCharsets.UTF_8);
 
-		Log.d(RBMQConstant.MULTI_LOG, message.getEnvelope().getExchange() + " - " + message.getProperties().getClassName());
-		Log.d(RBMQConstant.MULTI_LOG, message.getEnvelope().getRoutingKey() + " - " + body);
-
 		switch (message.getEnvelope().getRoutingKey()) {
 			case RBMQConstant.ROUTING_KEY_1:
 				text1.postValue(body);
@@ -85,6 +80,8 @@ public class MultiCosumer {
 	 * RabbitMQ 연결
 	 */
 	public void connection() {
+
+		this.close();
 
 		// 서버 설정
 		ConnectionFactory factory = new ConnectionFactory();

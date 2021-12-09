@@ -2,7 +2,10 @@ package com.clonecoding.rabbitmqtest.repository;
 
 import android.util.Log;
 
-import com.clonecoding.rabbitmqtest.Constant.RBMQConstant;
+import androidx.lifecycle.MutableLiveData;
+
+import com.clonecoding.rabbitmqtest.constant.RBMQConstant;
+import com.clonecoding.rabbitmqtest.data.RBMQConnection;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -20,6 +23,9 @@ public class Producer {
 
 	// 채널
 	private Channel channel;
+
+	// 텍스트
+	public MutableLiveData<String> text;
 
 	private Producer() {
 	}
@@ -44,14 +50,14 @@ public class Producer {
 	 */
 	public void ExchangeConnection() {
 
-		this.close();
-
 		// 서버 설정
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost(RBMQConstant.SERVER_HOST);
 
-		try (Connection connection = factory.newConnection();
-		     Channel channel = connection.createChannel()) {
+		try (
+				Connection connection = factory.newConnection();
+				Channel channel = connection.createChannel()
+		) {
 
 			channel.queueDeclare(RBMQConstant.QUEUE_NAME, false, false, false, null);
 
@@ -63,16 +69,17 @@ public class Producer {
 			Log.d("RBMQ [x] Sent :", message);
 		} catch (Exception e) {
 
-			close();
 		}
 	}
 
-	public void connection() {
-
-		this.close();
+	public void connection(RBMQConnection conn) {
 
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost(RBMQConstant.SERVER_HOST);
+		factory.setUsername(conn.user);
+		factory.setPassword(conn.password);
+		factory.setVirtualHost(RBMQConstant.VIRTUAL_HOST);
+		factory.setHost(conn.ip);
+		factory.setPort(conn.port);
 
 		try {
 			// 서버 연결
@@ -83,14 +90,15 @@ public class Producer {
 
 			// 큐 bind
 			this.channel.queueDeclare(
-					RBMQConstant.QUEUE_NAME, false, false, false, null
+					conn.queue, false, false, false, null
 			);
 
-			String message = "Simple Connection";
-			//this.channel.basicPublish("", RBMQConstant.QUEUE_NAME, null, message.getBytes());
-			Log.d("RBMQ [x] Sent :", message);
+			if (text != null) {
+				text.postValue(text.getValue() + "\nProducer Connect");
+			}
 		} catch (Exception e) {
 
+			e.printStackTrace();
 			close();
 		}
 	}
@@ -112,10 +120,15 @@ public class Producer {
 					connection.close();
 				}
 
-				this.showErrorLog("연결 해제");
+				this.showErrorLog("연결 해제");if (text != null) {
+					text.postValue(text.getValue() + "\nProducer connection close");
+				}
 			} catch (Exception e) {
 
 				this.showErrorLog("연결 해제 실패" + e.toString());
+				if (text != null) {
+					text.postValue(text.getValue() + "\n" + e.toString());
+				}
 			}
 		});
 	}

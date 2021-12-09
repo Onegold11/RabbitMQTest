@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidPorjects/RabbitMQTest/app/src/main/res/layout/activity_main.xml" value="0.33016304347826086" />
+        <entry key="..\:/AndroidPorjects/RabbitMQTest/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/AndroidPorjects/RabbitMQTest/app/src/main/res/layout/activity_sub.xml" value="0.21614583333333334" />
+        <entry key="..\:/AndroidPorjects/RabbitMQTest/app/src/main/res/layout/fragment_mqtt.xml" value="0.2957427536231884" />
+        <entry key="..\:/AndroidPorjects/RabbitMQTest/app/src/main/res/layout/fragment_simple.xml" value="0.2957427536231884" />
       </map>
     </option>
   </component>

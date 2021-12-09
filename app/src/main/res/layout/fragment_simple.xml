@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="viewmodel"
+			type="com.clonecoding.rabbitmqtest.viewmodel.MainViewModel" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:paddingStart="20dp"
+		android:paddingEnd="20dp"
+		android:paddingBottom="20dp"
+		tools:context=".ui.activity.MainActivity">
+
+		<TextView
+			android:id="@+id/ip_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="IP"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/ip_textview"
+			app:layout_constraintEnd_toStartOf="@id/ip_textview"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@id/ip_textview" />
+
+		<EditText
+			android:id="@+id/ip_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:nextFocusDown="@id/port_textview"
+			android:singleLine="true"
+			android:text="@={viewmodel.ip}"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toStartOf="@id/port_text"
+			app:layout_constraintStart_toEndOf="@id/ip_text"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="192.168.0.1" />
+
+		<TextView
+			android:id="@+id/port_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="PORT"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/port_textview"
+			app:layout_constraintEnd_toStartOf="@id/port_textview"
+			app:layout_constraintStart_toEndOf="@id/ip_textview"
+			app:layout_constraintTop_toTopOf="@id/port_textview" />
+
+		<EditText
+			android:id="@+id/port_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:inputType="number"
+			android:nextFocusDown="@id/user_textview"
+			android:singleLine="true"
+			android:text='@={viewmodel.port + ""}'
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/port_text"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="5672" />
+
+		<TextView
+			android:id="@+id/user_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="USER"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/user_textview"
+			app:layout_constraintEnd_toStartOf="@id/user_textview"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@id/user_textview" />
+
+		<EditText
+			android:id="@+id/user_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:nextFocusDown="@id/pass_textview"
+			android:singleLine="true"
+			android:text="@={viewmodel.user}"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toStartOf="@id/pass_text"
+			app:layout_constraintStart_toEndOf="@id/user_text"
+			app:layout_constraintTop_toBottomOf="@id/port_textview"
+			tools:text="admin" />
+
+		<TextView
+			android:id="@+id/pass_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="PASSWORD"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/pass_textview"
+			app:layout_constraintEnd_toStartOf="@id/pass_textview"
+			app:layout_constraintStart_toEndOf="@id/user_textview"
+			app:layout_constraintTop_toTopOf="@id/pass_textview" />
+
+		<EditText
+			android:id="@+id/pass_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:imeOptions="actionDone"
+			android:singleLine="true"
+			android:text="@={viewmodel.password}"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/pass_text"
+			app:layout_constraintTop_toBottomOf="@id/port_textview"
+			tools:text="admin" />
+
+		<TextView
+			android:id="@+id/queue_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="QUEUE"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/queue_textview"
+			app:layout_constraintEnd_toStartOf="@id/queue_textview"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@id/queue_textview" />
+
+		<EditText
+			android:id="@+id/queue_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:nextFocusDown="@id/pass_textview"
+			android:singleLine="true"
+			android:text="@={viewmodel.queue}"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toStartOf="@id/exchange_text"
+			app:layout_constraintStart_toEndOf="@id/queue_text"
+			app:layout_constraintTop_toBottomOf="@id/pass_textview"
+			tools:text="admin" />
+
+		<TextView
+			android:id="@+id/exchange_text"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:text="EXCHANGE"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="@id/exchange_textview"
+			app:layout_constraintEnd_toStartOf="@id/exchange_textview"
+			app:layout_constraintStart_toEndOf="@id/queue_textview"
+			app:layout_constraintTop_toTopOf="@id/exchange_textview" />
+
+		<EditText
+			android:id="@+id/exchange_textview"
+			android:layout_width="200dp"
+			android:layout_height="wrap_content"
+			android:imeOptions="actionDone"
+			android:singleLine="true"
+			android:text="@={viewmodel.exchange}"
+			android:textAlignment="center"
+			android:textSize="16sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@id/exchange_text"
+			app:layout_constraintTop_toBottomOf="@id/pass_textview"
+			tools:text="admin" />
+
+		<TextView
+			android:id="@+id/message_title"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="Message"
+			android:textAlignment="center"
+			android:textSize="24sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="@id/content_text"
+			app:layout_constraintTop_toBottomOf="@id/exchange_textview" />
+
+		<TextView
+			android:id="@+id/content_text"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:background="#b4ffff"
+			android:gravity="bottom"
+			android:padding="10dp"
+			android:scrollbars="vertical"
+			android:text="@{viewmodel.text}"
+			android:textColor="#000000"
+			android:textSize="24sp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/message_title"
+			app:layout_constraintWidth_percent="0.3"
+			tools:text="test" />
+
+		<Button
+			android:id="@+id/start_consume_button"
+			android:layout_width="250dp"
+			android:layout_height="wrap_content"
+			android:text="Start Consume"
+			app:layout_constraintBottom_toTopOf="@id/disconnect_consume_button"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<Button
+			android:id="@+id/disconnect_consume_button"
+			android:layout_width="250dp"
+			android:layout_height="wrap_content"
+			android:text="Disconnect Consume"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

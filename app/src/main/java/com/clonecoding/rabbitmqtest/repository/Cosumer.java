@@ -4,9 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.clonecoding.rabbitmqtest.Constant.RBMQConstant;
-import com.clonecoding.rabbitmqtest.dto.RoomDto;
-import com.google.gson.Gson;
+import com.clonecoding.rabbitmqtest.constant.RBMQConstant;
+import com.clonecoding.rabbitmqtest.data.RBMQConnection;
 import com.rabbitmq.client.CancelCallback;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -41,11 +40,8 @@ public class Cosumer {
 
 		Log.d("RBMQ", body);
 
-		Gson gson = new Gson();
-		RoomDto dto = gson.fromJson(body, RoomDto.class);
-
 		if (text != null) {
-			text.postValue(dto.toString());
+			text.postValue(text.getValue() + "\n" + body);
 		}
 	};
 
@@ -70,13 +66,15 @@ public class Cosumer {
 	/**
 	 * RabbitMQ 연결
 	 */
-	public void connection() {
-
-		close();
+	public void connection(RBMQConnection conn) {
 
 		// 서버 설정
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost(RBMQConstant.SERVER_HOST);
+		factory.setUsername(conn.user);
+		factory.setPassword(conn.password);
+		factory.setVirtualHost(RBMQConstant.VIRTUAL_HOST);
+		factory.setHost(conn.ip);
+		factory.setPort(conn.port);
 
 		try {
 			// 서버 연결
@@ -87,18 +85,25 @@ public class Cosumer {
 
 			// 큐 bind
 			this.channel.queueDeclare(
-					RBMQConstant.QUEUE_NAME,
+					conn.queue,
 					false, false, false, null
 			);
 
 			this.channel.basicConsume(
-					RBMQConstant.QUEUE_NAME,
+					conn.queue,
 					true,
 					deliverCallback, cancelCallback
 			);
 
+			if (text != null) {
+				text.postValue(text.getValue() + "\nConsumer connect");
+			}
 		} catch (Exception e) {
 
+			if (text != null) {
+				text.postValue(text.getValue() + "\n" + e.toString());
+			}
+			e.printStackTrace();
 			close();
 		}
 	}
@@ -153,9 +158,15 @@ public class Cosumer {
 				}
 
 				this.showErrorLog("연결 해제");
+				if (text != null) {
+					text.postValue(text.getValue() + "\nComsumer connection close");
+				}
 			} catch (Exception e) {
 
 				this.showErrorLog("연결 해제 실패" + e.toString());
+				if (text != null) {
+					text.postValue(text.getValue() + "\n" + e.toString());
+				}
 			}
 		});
 	}

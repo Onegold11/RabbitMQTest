@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/simpleFragment">
+
+	<fragment
+		android:id="@+id/simpleFragment"
+		android:name="com.clonecoding.rabbitmqtest.ui.fragment.SimpleFragment"
+		android:label="fragment_simple"
+		tools:layout="@layout/fragment_simple" >
+		<action
+			android:id="@+id/action_simpleFragment_to_mqttFragment"
+			app:destination="@id/mqttFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/mqttFragment"
+		android:name="com.clonecoding.rabbitmqtest.ui.fragment.MqttFragment"
+		android:label="fragment_mqtt"
+		tools:layout="@layout/fragment_mqtt" >
+		<action
+			android:id="@+id/action_mqttFragment_to_simpleFragment"
+			app:destination="@id/simpleFragment" />
+	</fragment>
+</navigation>

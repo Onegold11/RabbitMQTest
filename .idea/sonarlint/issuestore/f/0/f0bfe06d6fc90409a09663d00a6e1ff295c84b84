@@ -1,0 +1,13 @@
+
+r
+java:S1104"PMake user a static final constant or non-public and provide accessors if needed.(¾Êïûùÿÿÿÿ8”«œ¿Ù/
+v
+java:S1104"TMake password a static final constant or non-public and provide accessors if needed.(¼şòüÿÿÿÿ8”«œ¿Ù/
+i
+java:S1104	"NMake ip a static final constant or non-public and provide accessors if needed.(Ìî“Šùÿÿÿÿ
+f
+java:S1104"PMake port a static final constant or non-public and provide accessors if needed.(Œ•é‘
+g
+java:S1104"QMake queue a static final constant or non-public and provide accessors if needed.(—„¨ë
+o
+java:S1104"TMake exchange a static final constant or non-public and provide accessors if needed.(èºëıÿÿÿÿ

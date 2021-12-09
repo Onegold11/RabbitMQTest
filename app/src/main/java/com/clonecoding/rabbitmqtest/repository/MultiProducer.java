@@ -2,7 +2,7 @@ package com.clonecoding.rabbitmqtest.repository;
 
 import android.util.Log;
 
-import com.clonecoding.rabbitmqtest.Constant.RBMQConstant;
+import com.clonecoding.rabbitmqtest.constant.RBMQConstant;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -40,6 +40,8 @@ public class MultiProducer {
 	}
 
 	public void connection() {
+
+		this.close();
 
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost(RBMQConstant.SERVER_HOST);
